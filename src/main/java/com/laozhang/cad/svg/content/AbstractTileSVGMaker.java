@@ -1,5 +1,6 @@
 package com.laozhang.cad.svg.content;
 
+import com.laozhang.cad.converter.Resolution;
 import com.laozhang.cad.svg.WaterMarkPoint;
 import org.dom4j.Element;
 
@@ -51,5 +52,5 @@ public abstract class AbstractTileSVGMaker extends AbstractSVGMaker {
         return list;
     }
 
-    public abstract void tileRender(Element parent, int width, int height);
+    public abstract void tileRender(Element parent, Resolution resolution);
 }

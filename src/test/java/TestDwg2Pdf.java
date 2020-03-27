@@ -1,4 +1,4 @@
-import com.aspose.cad.Image;
+import com.aspose.cad.*;
 import com.aspose.cad.fileformats.cad.CadDrawTypeMode;
 import com.aspose.cad.imageoptions.CadRasterizationOptions;
 import com.aspose.cad.imageoptions.PdfOptions;
@@ -12,18 +12,24 @@ public class TestDwg2Pdf {
         String targetBPath = "D:\\IDEA\\cad\\17b.pdf";
         String targetCPath = "D:\\IDEA\\cad\\17c.pdf";
 
-        Image image = Image.load(sourcePath);
-        int width = image.getWidth();
-        int height = image.getHeight();
-        int zoom = 1008000 / width / height;//100万像素等比倍数
+
+        LoadOptions loadOptions = new LoadOptions();
+        loadOptions.setSpecifiedEncoding(CodePages.SimpChineseOtherGb2312);
+
+        Image image = Image.load(sourcePath,loadOptions);
+
         // Create an instance of PdfOptions
         PdfOptions pdfOptions = new PdfOptions();
 
         CadRasterizationOptions cadRasterizationOptions = new CadRasterizationOptions();
-        cadRasterizationOptions.setPageWidth(image.getWidth() * zoom);
-        cadRasterizationOptions.setPageHeight(image.getHeight() * zoom);
+        cadRasterizationOptions.setPageHeight(1080);
+        cadRasterizationOptions.setPageWidth(1920);
         cadRasterizationOptions.setDrawType(CadDrawTypeMode.UseObjectColor);
         cadRasterizationOptions.setUnitType(UnitType.Unitless);
+
+        cadRasterizationOptions.getGraphicsOptions().setSmoothingMode(SmoothingMode.HighQuality);
+        cadRasterizationOptions.getGraphicsOptions().setTextRenderingHint(TextRenderingHint.AntiAliasGridFit);
+        cadRasterizationOptions.getGraphicsOptions().setInterpolationMode(InterpolationMode.HighQualityBicubic);
         pdfOptions.setVectorRasterizationOptions(cadRasterizationOptions);
 
         image.save(targetPath, pdfOptions);

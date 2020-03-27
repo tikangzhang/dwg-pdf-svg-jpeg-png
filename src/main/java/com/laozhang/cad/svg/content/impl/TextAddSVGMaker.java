@@ -1,5 +1,7 @@
 package com.laozhang.cad.svg.content.impl;
 
+import com.laozhang.cad.converter.Drawing;
+import com.laozhang.cad.converter.Resolution;
 import com.laozhang.cad.svg.content.AbstractNormalSVGMaker;
 import org.dom4j.Element;
 
@@ -47,7 +49,7 @@ public class TextAddSVGMaker extends AbstractNormalSVGMaker {
     }
 
     @Override
-    public void add(Element parent){
+    public void add(Element parent, Resolution resolution, Drawing drawing){
         Element text = parent.addElement(NODE_TYPE);
         text.addAttribute(NODE_X, this.x);
         text.addAttribute(NODE_Y, this.y);

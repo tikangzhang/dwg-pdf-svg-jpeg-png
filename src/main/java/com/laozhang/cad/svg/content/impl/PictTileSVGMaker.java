@@ -1,14 +1,13 @@
 package com.laozhang.cad.svg.content.impl;
 
+import com.laozhang.cad.converter.Resolution;
 import com.laozhang.cad.svg.WaterMarkPoint;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Element;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class PictureTileSVGMaker extends AbstractTileSVGMaker {
+public class PictTileSVGMaker extends AbstractTileSVGMaker {
     public static final String NODE_TYPE = "image";
     public static final String NODE_HREF_KEY = "xlink:href";
     public static final String NODE_TYPE_KEY = "type";
@@ -20,7 +19,7 @@ public class PictureTileSVGMaker extends AbstractTileSVGMaker {
     private String pictWidth;
     private String pictHeight;
 
-    public PictureTileSVGMaker(String path,int width,int height){
+    public PictTileSVGMaker(String path, int width, int height){
         super(width,height);
         this.path = "file://" + path;
         this.type = "image/" + inferType(path);
@@ -28,29 +27,29 @@ public class PictureTileSVGMaker extends AbstractTileSVGMaker {
         this.pictHeight = height + "";
     }
 
-    public PictureTileSVGMaker path(String path){
+    public PictTileSVGMaker path(String path){
         this.path = path;
         return this;
     }
 
-    public PictureTileSVGMaker type(String type){
+    public PictTileSVGMaker type(String type){
         this.type = type;
         return this;
     }
 
-    public PictureTileSVGMaker pictWidth(String pictWidth){
+    public PictTileSVGMaker pictWidth(String pictWidth){
         this.pictWidth = pictWidth;
         return this;
     }
 
-    public PictureTileSVGMaker pictHeight(String pictHeight){
+    public PictTileSVGMaker pictHeight(String pictHeight){
         this.pictHeight = pictHeight;
         return this;
     }
 
     @Override
-    public void tileRender(Element parent,int width,int height){
-        List<WaterMarkPoint> list = getWaterMarkBackGround(width,height);
+    public void tileRender(Element parent, Resolution resolution){
+        List<WaterMarkPoint> list = getWaterMarkBackGround(resolution.getWidth(),resolution.getHeight());
         for(WaterMarkPoint point : list) {
             Element image = parent.addElement(NODE_TYPE);
             image.addAttribute(NODE_HREF_KEY, this.path);

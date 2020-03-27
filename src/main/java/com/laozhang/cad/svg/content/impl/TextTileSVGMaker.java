@@ -1,5 +1,6 @@
 package com.laozhang.cad.svg.content.impl;
 
+import com.laozhang.cad.converter.Resolution;
 import com.laozhang.cad.svg.WaterMarkPoint;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Element;
@@ -56,8 +57,8 @@ public class TextTileSVGMaker extends AbstractTileSVGMaker {
     }
 
     @Override
-    public void tileRender(Element parent,int width,int height){
-        List<WaterMarkPoint> list = getWaterMarkBackGround(width,height);
+    public void tileRender(Element parent, Resolution resolution){
+        List<WaterMarkPoint> list = getWaterMarkBackGround(resolution.getWidth(),resolution.getHeight());
         for(WaterMarkPoint point : list) {
             Element text = parent.addElement(NODE_TYPE);
             text.addAttribute(NODE_X, point.X());

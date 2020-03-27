@@ -6,8 +6,8 @@ import com.aspose.pdf.devices.Resolution;
 public class TestPdf2Png {
     public static void main(String[] args) throws Exception {
 
-        Document pdfDocument = new Document("D:\\IDEA\\cad\\17.pdf");
-        java.io.OutputStream imageStream = new java.io.FileOutputStream("D:\\IDEA\\cad\\17.png");
+        Document pdfDocument = new Document("C:\\Users\\admin\\Desktop\\now\\drawing\\total_java\\4A18025A001A0.pdf");
+        java.io.OutputStream imageStream = new java.io.FileOutputStream("C:\\Users\\admin\\Desktop\\now\\drawing\\total_java_convert\\Output.png");
         // Create JPEG device with specified attributes
         // Quality [0-100], 100 is Maximum
         // Create Resolution object

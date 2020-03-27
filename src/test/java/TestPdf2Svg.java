@@ -5,7 +5,7 @@ import com.aspose.pdf.SvgSaveOptions;
 public class TestPdf2Svg {
     public static void main(String[] args) throws Exception {
 
-        Document doc = new Document("D:\\IDEA\\cad\\17.pdf");
+        Document doc = new Document("C:\\Users\\admin\\Desktop\\now\\drawing\\total_java\\4A18025A001A0.pdf");
         //Document doc = new Document("C:\\Users\\admin\\Downloads\\Apache+Flink+v1.9.pdf");
 
         Page item = doc.getPages().get_Item(1);
@@ -20,6 +20,6 @@ public class TestPdf2Svg {
         saveOptions.CompressOutputToZipArchive = false;
         saveOptions.setExtractOcrSublayerOnly(true);
 
-        String outFileName = "D:\\IDEA\\cad\\Output.svg";
+        String outFileName = "C:\\Users\\admin\\Desktop\\now\\drawing\\total_java_convert\\Output.svg";
         doc.save(outFileName, saveOptions); }
 }

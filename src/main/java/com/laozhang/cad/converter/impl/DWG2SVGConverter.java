@@ -3,12 +3,17 @@ package com.laozhang.cad.converter.impl;
 import java.io.*;
 import java.util.List;
 
+import com.aspose.cad.CodePages;
 import com.aspose.cad.Image;
+import com.aspose.cad.LoadOptions;
 import com.aspose.cad.fileformats.cad.CadDrawTypeMode;
+import com.aspose.cad.fileformats.cad.CadImage;
 import com.aspose.cad.imageoptions.CadRasterizationOptions;
 import com.aspose.cad.imageoptions.SvgOptions;
 import com.aspose.cad.imageoptions.UnitType;
 import com.laozhang.cad.converter.AbstractSVGConverter;
+import com.laozhang.cad.converter.Drawing;
+import com.laozhang.cad.converter.Resolution;
 import com.laozhang.cad.svg.content.AbstractNormalSVGMaker;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Document;
@@ -17,18 +22,25 @@ import org.dom4j.io.SAXReader;
 
 
 public class DWG2SVGConverter extends AbstractSVGConverter {
-    private int sourceWidth;
-    private int sourceHeight;
+    private Resolution resolution;
+    private Drawing drawing;
 
     public DWG2SVGConverter(String sourcePath, String targetPath) {
+        this(sourcePath,targetPath,Resolution.RESOLUTION_1920_1080);
+    }
+
+    public DWG2SVGConverter(String sourcePath, String targetPath, Resolution resolution) {
         super(sourcePath,targetPath);
+        this.resolution = resolution;
+        // 默认图纸大小就是被设置的分辨率大小
+        this.drawing = new Drawing(resolution.getWidth(),resolution.getHeight());
     }
 
     @Override
     final public void buildSvgWithMaker(AbstractTileSVGMaker maker){
         try {
             Document doc = getSvgDocument();
-            maker.tileRender(doc.getRootElement().addElement("g"),this.sourceWidth,this.sourceHeight);
+            maker.tileRender(doc.getRootElement().addElement("g"),this.resolution);
             saveSvg(doc);
         }catch (Exception ex){
             ex.printStackTrace();
@@ -39,7 +51,7 @@ public class DWG2SVGConverter extends AbstractSVGConverter {
     final public void buildSvgWithMaker(AbstractNormalSVGMaker maker) {
         try {
             Document doc = getSvgDocument();
-            maker.add(doc.getRootElement().addElement("g"));
+            maker.add(doc.getRootElement().addElement("g"),this.resolution,this.drawing);
             saveSvg(doc);
         }catch (Exception ex){
             ex.printStackTrace();
@@ -59,24 +71,25 @@ public class DWG2SVGConverter extends AbstractSVGConverter {
     }
 
     private void getSvgOutputStream(OutputStream outputStream) throws Exception{
-        Image image = Image.load(this.sourcePath);
-        int width = image.getWidth();
-        int height = image.getHeight();
-        int zoom = 1008000 / width / height;//100万像素等比倍数
-        this.sourceWidth = image.getWidth() * zoom;
-        this.sourceHeight = image.getHeight() * zoom;
+        LoadOptions loadOptions = new LoadOptions();
+        loadOptions.setSpecifiedEncoding(CodePages.Utf8);
+
+        Image image = Image.load(this.sourcePath,loadOptions);
+        // 获取图纸大小
+        this.drawing.setWidth(image.getWidth());
+        this.drawing.setHeight(image.getHeight());
 
         CadRasterizationOptions cadRasterizationOptions = new CadRasterizationOptions();
-        cadRasterizationOptions.setPageWidth(this.sourceWidth);
-        cadRasterizationOptions.setPageHeight(this.sourceHeight);
+        cadRasterizationOptions.setPageWidth(this.resolution.getWidth());
+        cadRasterizationOptions.setPageHeight(this.resolution.getHeight());
         cadRasterizationOptions.setDrawType(CadDrawTypeMode.UseObjectColor);
         SvgOptions options = new SvgOptions();
         options.setVectorRasterizationOptions(cadRasterizationOptions);
             //options.setColorType(SvgColorMode.Grayscale);
             //options.setTextAsShapes(true);
+
         image.save(outputStream,options);
     }
-
 
     private static boolean IsMetric(int initial){
         boolean isMetric = true;
