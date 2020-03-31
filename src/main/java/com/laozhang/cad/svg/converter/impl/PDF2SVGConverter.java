@@ -1,12 +1,11 @@
-package com.laozhang.cad.converter.impl;
+package com.laozhang.cad.svg.converter.impl;
 
 import com.aspose.pdf.Document;
-import com.aspose.pdf.MarginInfo;
 import com.aspose.pdf.Page;
 import com.aspose.pdf.SvgSaveOptions;
-import com.laozhang.cad.converter.AbstractSVGConverter;
-import com.laozhang.cad.converter.Drawing;
-import com.laozhang.cad.converter.Resolution;
+import com.laozhang.cad.svg.converter.AbstractSVGConverter;
+import com.laozhang.cad.svg.converter.Drawing;
+import com.laozhang.cad.svg.converter.Resolution;
 import com.laozhang.cad.svg.content.AbstractNormalSVGMaker;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Element;

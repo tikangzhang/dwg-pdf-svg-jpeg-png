@@ -1,7 +1,7 @@
 package com.laozhang.cad.svg.content.impl;
 
-import com.laozhang.cad.converter.Drawing;
-import com.laozhang.cad.converter.Resolution;
+import com.laozhang.cad.svg.converter.Drawing;
+import com.laozhang.cad.svg.converter.Resolution;
 
 public class PictFourCornerMidSVGMaker extends PictFourCornerSVGMaker {
     public PictFourCornerMidSVGMaker(String path, int pictWidth, int pictHeight){

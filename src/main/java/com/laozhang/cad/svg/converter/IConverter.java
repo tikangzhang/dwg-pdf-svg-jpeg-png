@@ -1,4 +1,4 @@
-package com.laozhang.cad.converter;
+package com.laozhang.cad.svg.converter;
 
 import com.laozhang.cad.svg.content.AbstractNormalSVGMaker;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;

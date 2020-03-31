@@ -1,4 +1,4 @@
-package com.laozhang.cad.converter.impl;
+package com.laozhang.cad.svg.converter.impl;
 
 import java.io.*;
 import java.util.List;
@@ -7,13 +7,12 @@ import com.aspose.cad.CodePages;
 import com.aspose.cad.Image;
 import com.aspose.cad.LoadOptions;
 import com.aspose.cad.fileformats.cad.CadDrawTypeMode;
-import com.aspose.cad.fileformats.cad.CadImage;
 import com.aspose.cad.imageoptions.CadRasterizationOptions;
 import com.aspose.cad.imageoptions.SvgOptions;
 import com.aspose.cad.imageoptions.UnitType;
-import com.laozhang.cad.converter.AbstractSVGConverter;
-import com.laozhang.cad.converter.Drawing;
-import com.laozhang.cad.converter.Resolution;
+import com.laozhang.cad.svg.converter.AbstractSVGConverter;
+import com.laozhang.cad.svg.converter.Drawing;
+import com.laozhang.cad.svg.converter.Resolution;
 import com.laozhang.cad.svg.content.AbstractNormalSVGMaker;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Document;

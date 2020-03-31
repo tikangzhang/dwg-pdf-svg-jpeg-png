@@ -1,4 +1,4 @@
-package com.laozhang.cad.converter;
+package com.laozhang.cad.svg.converter;
 
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;

@@ -1,7 +1,7 @@
-package com.laozhang.cad.util;
+package com.laozhang.cad.app;
 
-import com.laozhang.cad.converter.Resolution;
-import com.laozhang.cad.converter.impl.PDF2SVGConverter;
+import com.laozhang.cad.svg.converter.Resolution;
+import com.laozhang.cad.svg.converter.impl.PDF2SVGConverter;
 import com.laozhang.cad.svg.content.impl.PictFourCornerSVGMaker;
 
 public class Pdf2Svg {

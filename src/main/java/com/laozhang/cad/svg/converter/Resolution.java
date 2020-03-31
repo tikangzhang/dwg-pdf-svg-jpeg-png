@@ -1,4 +1,4 @@
-package com.laozhang.cad.converter;
+package com.laozhang.cad.svg.converter;
 
 public enum Resolution {
     RESOLUTION_1920_1080(1920,1080),

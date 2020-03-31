@@ -1,13 +1,13 @@
-package com.laozhang.cad.util;
+package com.laozhang.cad.app;
 
-import com.laozhang.cad.converter.Resolution;
-import com.laozhang.cad.converter.impl.DWG2SVGConverter;
+import com.laozhang.cad.svg.converter.Resolution;
+import com.laozhang.cad.svg.converter.impl.DWG2SVGConverter;
 import com.laozhang.cad.svg.content.impl.PictFourCornerMidSVGMaker;
 
 public class Dwg2Svg {
 
     public static void main(String[] args) throws Exception {
-        String sourcePath = "D:\\IDEA\\cad\\17.dwg";
+        String sourcePath = "C:\\Users\\admin\\Desktop\\now\\drawing\\total_dwg\\WM1001-b01-027触摸屏挂件2.dwg";
         String targetPath = "D:\\IDEA\\cad\\17.dwg.svg";
         String pictPath = "D:\\IDEA\\cad\\202003230930.jpg";
 

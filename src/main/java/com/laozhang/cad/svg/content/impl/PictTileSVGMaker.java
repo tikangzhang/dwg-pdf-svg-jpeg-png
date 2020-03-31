@@ -1,6 +1,6 @@
 package com.laozhang.cad.svg.content.impl;
 
-import com.laozhang.cad.converter.Resolution;
+import com.laozhang.cad.svg.converter.Resolution;
 import com.laozhang.cad.svg.WaterMarkPoint;
 import com.laozhang.cad.svg.content.AbstractTileSVGMaker;
 import org.dom4j.Element;

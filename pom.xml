@@ -46,19 +46,17 @@
             <artifactId>itext-asian</artifactId>
             <version>5.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.51</version>
+        </dependency>
     </dependencies>
-
-    <!-- ... -->
     <repositories>
         <repository>
             <id>svn-export-repo</id>
             <name>svn-export repository on GitHub</name>
             <url>http://bripkens.github.com/svg-export/repository/</url>
-        </repository>
-        <repository>
-            <id>AsposeJavaAPI</id>
-            <name>Aspose Java API</name>
-            <url>https://repository.aspose.com/repo/</url>
         </repository>
         <repository>
             <id>AsposeJavaAPI</id>
@@ -73,7 +71,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>${java.version}</release>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <compilerArgument>-Xlint:unchecked</compilerArgument>

@@ -1,4 +1,4 @@
-package com.laozhang.cad.converter;
+package com.laozhang.cad.svg.converter;
 
 public class Drawing {
     private int width;
