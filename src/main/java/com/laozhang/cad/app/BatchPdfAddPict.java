@@ -1,6 +1,7 @@
 package com.laozhang.cad.app;
 
-import com.laozhang.cad.pdf.Pict2PDFAdder;
+import com.laozhang.cad.pdf.util.PdfUtil;
+import com.laozhang.cad.pdf.wm.PDFShortSidePictWaterMark;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -34,7 +35,7 @@ public class BatchPdfAddPict {
         for (File file : files) {
             fileName = file.getName();
             if (fileName.endsWith("pdf") || fileName.endsWith("PDF")) {
-                new Pict2PDFAdder(pictPath,pictWidth,pictHeight,margin).doing(sourcePath + "\\" + fileName ,targetPath + "\\" +  fileName);
+                new PdfUtil(sourcePath + "\\" + fileName,targetPath + "\\" +  fileName).waterMark(new PDFShortSidePictWaterMark(pictPath)).action();
                 System.out.println(fileName + " -> Done!");
             }
         }
